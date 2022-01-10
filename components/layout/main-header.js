@@ -5,12 +5,12 @@ const MainHeader = () => {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Link href="/">Next events</Link>
+        <Link href="/">Next Events</Link>
       </div>
       <nav className={classes.navigation}>
         <ul>
           <li>
-            <Link href="/events">Browse All events</Link>
+            <Link href="/events">Browse All Events</Link>
           </li>
         </ul>
       </nav>
