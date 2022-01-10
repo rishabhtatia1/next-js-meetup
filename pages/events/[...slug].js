@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import EventList from "../../components/events/event-list";
 import ResultsTitle from "../../components/events/results-title";
 import Button from "../../components/ui/button";
@@ -27,9 +28,29 @@ const FilteredEventsPage = () => {
       setLoadedEvents(events);
     }
   }, [data]);
+  let pageHeaderData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta name="description" content={`List of filtered events`} />
+    </Head>
+  );
   if (!loadedEvents) {
-    return <p className="center">Loading...</p>;
+    return (
+      <Fragment>
+        {pageHeaderData}
+        <p className="center">Loading...</p>
+      </Fragment>
+    );
   }
+  pageHeaderData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta
+        name="description"
+        content={`All events for ${numMonth}/${numYear}.`}
+      />
+    </Head>
+  );
   const numYear = +filteredData[0];
   const numMonth = +filteredData[1];
   if (
@@ -43,6 +64,7 @@ const FilteredEventsPage = () => {
   ) {
     return (
       <Fragment>
+        {pageHeaderData}
         <ErrorAlert>
           <p>Invalid Filter: Please adjust your values</p>
         </ErrorAlert>
@@ -63,6 +85,7 @@ const FilteredEventsPage = () => {
   if (!filteredEvents || filteredEvents?.length === 0) {
     return (
       <Fragment>
+        {pageHeaderData}
         <ErrorAlert>
           <p>No events found</p>
         </ErrorAlert>
@@ -75,6 +98,7 @@ const FilteredEventsPage = () => {
   const formatedDate = new Date(numYear, numMonth - 1);
   return (
     <Fragment>
+      {pageHeaderData}
       <ResultsTitle date={formatedDate} />
       <EventList items={filteredEvents} />
     </Fragment>
