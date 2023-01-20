@@ -5,7 +5,7 @@ import DateIcon from "../icons/date-icon";
 import classes from "./event-item.module.css";
 import NextImage from "next/image";
 
-const EventItem = (props) => {
+const EventItem = props => {
   const { title, image, date, location, id } = props?.data;
   const humanReadableDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",

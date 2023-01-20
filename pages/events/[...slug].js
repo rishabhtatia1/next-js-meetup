@@ -74,7 +74,7 @@ const FilteredEventsPage = () => {
       </Fragment>
     );
   }
-  const filteredEvents = loadedEvents.filter((event) => {
+  const filteredEvents = loadedEvents.filter(event => {
     const eventDate = new Date(event.date);
     return (
       eventDate.getFullYear() === numYear &&

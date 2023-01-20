@@ -1,6 +1,6 @@
 export const getAllEvents = async () => {
   const response = await fetch(
-    "https://nextjs-events-20725-default-rtdb.asia-southeast1.firebasedatabase.app/events.json"
+    "https://next-js-events-c566f-default-rtdb.asia-southeast1.firebasedatabase.app/events.json"
   );
   const data = await response.json();
   const events = [];

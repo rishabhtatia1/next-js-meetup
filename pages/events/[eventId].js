@@ -34,14 +34,14 @@ const EventsDetailPage = ({ event }) => {
     </Fragment>
   );
 };
-export const getStaticProps = async (context) => {
+export const getStaticProps = async context => {
   const eventId = context.params.eventId;
   const event = await getEventById(eventId);
   return { props: { event }, revalidate: 30 };
 };
 export const getStaticPaths = async () => {
   const allEvents = await getFeaturedEvents();
-  const paths = allEvents.map((event) => ({
+  const paths = allEvents.map(event => ({
     params: {
       eventId: event.id
     }

@@ -2,10 +2,10 @@ import { createContext, useEffect, useState } from "react";
 
 const NotificationContext = createContext({
   notification: null, // {title, message, status}
-  showNotification: (notificationData) => {},
+  showNotification: notificationData => {},
   hideNotification: () => {}
 });
-export const NotificationContextProvider = (props) => {
+export const NotificationContextProvider = props => {
   const [activeNotification, setActiveNotification] = useState();
   useEffect(() => {
     if (
@@ -21,7 +21,7 @@ export const NotificationContextProvider = (props) => {
       };
     }
   }, [activeNotification]);
-  const showNotificationHandler = (notificationData) => {
+  const showNotificationHandler = notificationData => {
     setActiveNotification(notificationData);
   };
   const hideNotificationHandler = () => {
